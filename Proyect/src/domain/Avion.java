@@ -64,6 +64,5 @@ public class Avion {
    public int getCapacidadEconomica(){return capacidadEconomica;}
    public int getOcupadosEjecutiva(){return ocupadosEjecutiva;}
    public int getOcupadosEconomica(){return ocupadosEconomica;}
-   
-    
+     
 }
