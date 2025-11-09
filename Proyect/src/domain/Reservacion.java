@@ -96,7 +96,7 @@ public class Reservacion {
         this.miFactura = f;
     }
 
-    /*@Override
+    @Override
     public String toString() {
         String nombrePasajero = (pasajero != null ? pasajero.getNombre() : "N/D");
         String vueloResumen = (vuelo != null
@@ -112,5 +112,5 @@ public class Reservacion {
                 + ", Asiento=" + asientoTxt
                 + ", Total=" + costoFinal + "]";
 
-    }*/
+    }
 }
