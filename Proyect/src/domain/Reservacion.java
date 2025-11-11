@@ -1,5 +1,7 @@
 package domain;
 
+import logic.PrecioService;
+
 public class Reservacion {
 
     private int idReservacion;
@@ -9,7 +11,9 @@ public class Reservacion {
     private double costoFinal;
     private String numAsiento;
     private Tiquete miTiquete;        
-    private Factura miFactura;        
+    private Factura miFactura;  
+    
+    private PrecioService precioService;
 
 
     public Reservacion() {}
@@ -23,6 +27,13 @@ public class Reservacion {
         this.costoFinal = costoFinal;
         this.numAsiento = numAsiento;
     }
+    
+    public Reservacion(PrecioService precioService){
+        
+        this.precioService = precioService;
+        this.costoFinal = 0.0;
+    }
+    
 
     public int getIdReservacion() {
         return idReservacion;
@@ -81,11 +92,25 @@ public class Reservacion {
     }
     
     public double calcularCostoFinal() {
-        throw new UnsupportedOperationException("Pendiente de implementación (Sprint 2)");
+        this.costoFinal = precioService.calcularCosto(this.vuelo, this.clase);
+        return this.costoFinal;
     }
 
     public boolean puedeConfirmarse() {
-        throw new UnsupportedOperationException("Pendiente de implementación (Sprint 2)");
+        
+        boolean datosValidos = this.vuelo !=null &&
+                               this.pasajero != null &&
+                               this.clase != null;
+        
+        if(!datosValidos){
+            return false;
+        }
+        
+        if (this.costoFinal <= 0.0){
+            return false;
+        }
+        
+        return this.vuelo.verificarDisponibilidad(this.clase);
     }
 
     public void enlazarTiquete(Tiquete t) {
@@ -113,4 +138,6 @@ public class Reservacion {
                 + ", Total=" + costoFinal + "]";
 
     }
+    
+    
 }
