@@ -2,8 +2,8 @@ package domain;
 
 public abstract class Documento {
 
-    private int idDocumento;
-    private String fechaEmision;
+    int idDocumento;
+    String fechaEmision;
 
 
     public Documento() {

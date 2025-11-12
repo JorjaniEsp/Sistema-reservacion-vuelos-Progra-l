@@ -14,6 +14,10 @@ public class Avion {
    this.ocupadosEjecutiva = 0;
    this.ocupadosEconomica = 0;
    }
+
+    public Avion(String airbus_A320, int i, int i0, int i1) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
    
    
    public boolean hayEspacio(Clase clase){
