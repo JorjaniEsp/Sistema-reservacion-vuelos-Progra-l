@@ -71,7 +71,23 @@ public class Vuelo {
     }
 
     public boolean verificarDisponibilidad(Clase clase) {
-        throw new UnsupportedOperationException("Pendiente de implementación");
+        if (avion == null || clase == null) return false;
+        return avion.hayEspacio(clase);
+    }
+    
+    public boolean ocuparAsiento(Clase clase) {
+        if (avion == null || clase == null) return false;
+        int antes = avion.disponibles(clase);
+        if (antes <= 0) return false;
+        if (!avion.ocuparAsiento(clase)) return false;
+        
+        return avion.disponibles(clase) == antes - 1;
+    }
+    
+    public int disponibles(Clase clase) {
+        if (avion == null || clase == null) return 0;
+        return avion.disponibles(clase);
+    
     }
  
     @Override
