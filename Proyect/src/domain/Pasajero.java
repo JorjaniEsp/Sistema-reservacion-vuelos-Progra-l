@@ -1,4 +1,3 @@
-
 package domain;
 
 public class Pasajero {
@@ -69,11 +68,5 @@ public class Pasajero {
                 "Correo: " + correo +
                 "Pasaporte: " + pasaporte;
     }
-    
-    
-
-    
-    
-    
-    
+       
 }

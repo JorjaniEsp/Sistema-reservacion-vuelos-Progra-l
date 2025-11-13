@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package logic;
 import domain.Avion;
 import domain.Clase;
@@ -11,34 +7,25 @@ import domain.Pasajero;
 import domain.Reservacion;
 import domain.Tiquete;
 import domain.Vuelo;
-  import java.util.*;
-/**
- *
- * @author josse
- */
+import java.util.*;
+
 public class SistemaReservacion {
+ 
+    private final List<Vuelo> listaVuelos;
+    private final List<Reservacion> listaReservaciones;
+    private final PrecioService precioService;
+    private final DisponibilidadService disponibilidadService;
 
-
-/**
- * 
- */
-
-
-    
-    private List<Vuelo> listaVuelos;
-    private List<Reservacion> listaReservaciones;
-
-    
     public SistemaReservacion() {
-        listaVuelos = new ArrayList<>();
-        listaReservaciones = new ArrayList<>();
+        this.listaVuelos = new ArrayList<>();
+        this.listaReservaciones = new ArrayList<>();
+        this.precioService = new PrecioService();
+        this.disponibilidadService = new DisponibilidadService();
         inicializarDatos();
     }
 
-    //
     public List<Vuelo> buscarVuelos(String origen, String destino, String fecha) {
         List<Vuelo> resultados = new ArrayList<>();
-
         for (Vuelo v : listaVuelos) {
             if (v.getOrigen().equalsIgnoreCase(origen)
                     && v.getDestino().equalsIgnoreCase(destino)
@@ -46,88 +33,61 @@ public class SistemaReservacion {
                 resultados.add(v);
             }
         }
-
         return resultados;
     }
 
-    
     public double cotizar(Vuelo vuelo, Clase clase) {
-        if (vuelo == null || clase == null) return 0.0;
-
-        double costo = vuelo.getCostoBase();
-
-        
-        if (clase == Clase.EJECUTIVA) {
-            costo *= 1.5;
-        }
-
-        return costo;
+        return precioService.calcularCosto(vuelo, clase);
     }
 
-    
     public Reservacion reservar(Vuelo vuelo, Pasajero pasajero, Clase clase, String numAsiento, MetodoPago metodoPago) {
         if (vuelo == null || pasajero == null || clase == null || numAsiento == null || metodoPago == null) {
-            return null; 
-        }
-
-       
-        boolean disponible = true;
-        try {
-            disponible = vuelo.verificarDisponibilidad(clase);
-        } catch (UnsupportedOperationException e) {
-            
-            disponible = true;
-        }
-
-        if (!disponible) {
-            System.out.println("No hay cupos disponibles para este vuelo.");
             return null;
         }
 
-        
+        if (!disponibilidadService.hayEspacio(vuelo, clase)) {
+            System.out.println("No hay cupos disponibles para este vuelo.");
+            return null;
+        }
+        if (!disponibilidadService.ocuparAsiento(vuelo, clase)) {
+            System.out.println("No se pudo ocupar el asiento (posible concurrencia).");
+            return null;
+        }
+
         double costoFinal = cotizar(vuelo, clase);
 
-       
         int idReservacion = listaReservaciones.size() + 1;
         Reservacion reservacion = new Reservacion(idReservacion, vuelo, pasajero, clase, costoFinal, numAsiento);
 
-       
-        Tiquete tiquete = new Tiquete(reservacion);
-        Factura factura = new Factura(reservacion, metodoPago, idReservacion * 10, obtenerFechaActual());
+        int idDocBase = idReservacion * 10;
+        String hoy = obtenerFechaActual();
 
-       
+        Tiquete tiquete = DocumentoFactory.crearTiquete(reservacion, idDocBase, hoy);
+        Factura factura = DocumentoFactory.crearFactura(reservacion, metodoPago, idDocBase + 1, hoy);
+
         reservacion.enlazarTiquete(tiquete);
         reservacion.enlazarFactura(factura);
 
-        
         listaReservaciones.add(reservacion);
-
         return reservacion;
     }
 
-   
     public Reservacion obtenerReservacionPorId(int id) {
         for (Reservacion r : listaReservaciones) {
-            if (r.getIdReservacion() == id) {
-                return r;
-            }
+            if (r.getIdReservacion() == id) return r;
         }
         return null;
     }
 
-   
     public List<Reservacion> listarReservaciones() {
         return listaReservaciones;
     }
 
-  
-
     private void inicializarDatos() {
-        
-        Avion avion1 = new Avion( "Boeing 737", 120, 20, 0);
-        Avion avion2 = new Avion("Airbus A320", 100, 25, 0);
 
-       
+        Avion avion1 = new Avion(20, 120);  
+        Avion avion2 = new Avion(25, 100);  
+
         listaVuelos.add(new Vuelo("SJO", "MEX", "2025-11-15", "08:00", 250.0, avion1));
         listaVuelos.add(new Vuelo("SJO", "MIA", "2025-11-20", "14:00", 220.0, avion2));
         listaVuelos.add(new Vuelo("MEX", "SJO", "2025-11-25", "18:00", 230.0, avion1));
@@ -135,18 +95,16 @@ public class SistemaReservacion {
     }
 
     private String obtenerFechaActual() {
+
         return java.time.LocalDate.now().toString();
     }
 
-    
     public static void main(String[] args) {
         SistemaReservacion sistema = new SistemaReservacion();
 
         System.out.println("BÚSQUEDA DE VUELOS");
         List<Vuelo> encontrados = sistema.buscarVuelos("SJO", "MEX", "2025-11-15");
-        for (Vuelo v : encontrados) {
-            System.out.println(v);
-        }
+        for (Vuelo v : encontrados) System.out.println(v);
 
         if (!encontrados.isEmpty()) {
             Vuelo vuelo = encontrados.get(0);
@@ -158,16 +116,15 @@ public class SistemaReservacion {
                 System.out.println("RESERVACIÓN CONFIRMADA");
                 System.out.println(r);
                 System.out.println(r.getMiTiquete().mostrar());
-                System.out.println(r.getMiFactura());
+                System.out.println(r.getMiFactura().mostrar());
             } else {
                 System.out.println("No se pudo completar la reservación.");
             }
         }
 
-        System.out.println(" LISTADO DE RESERVACIONES");
-        for (Reservacion r : sistema.listarReservaciones()) {
+        System.out.println("LISTADO DE RESERVACIONES");
+        for (Reservacion r : sistema.listarReservaciones()) 
             System.out.println(r);
-        }
     }
 }  
 

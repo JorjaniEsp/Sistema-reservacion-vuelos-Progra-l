@@ -1,7 +1,5 @@
 package domain;
 
-import logic.PrecioService;
-
 public class Reservacion {
 
     private int idReservacion;
@@ -12,9 +10,6 @@ public class Reservacion {
     private String numAsiento;
     private Tiquete miTiquete;        
     private Factura miFactura;  
-    
-    private PrecioService precioService;
-
 
     public Reservacion() {}
 
@@ -28,13 +23,6 @@ public class Reservacion {
         this.numAsiento = numAsiento;
     }
     
-    public Reservacion(PrecioService precioService){
-        
-        this.precioService = precioService;
-        this.costoFinal = 0.0;
-    }
-    
-
     public int getIdReservacion() {
         return idReservacion;
     }
@@ -90,11 +78,7 @@ public class Reservacion {
     public Factura getMiFactura() {
         return miFactura;
     }
-    
-    public double calcularCostoFinal() {
-        this.costoFinal = precioService.calcularCosto(this.vuelo, this.clase);
-        return this.costoFinal;
-    }
+
 
     public boolean puedeConfirmarse() {
         
