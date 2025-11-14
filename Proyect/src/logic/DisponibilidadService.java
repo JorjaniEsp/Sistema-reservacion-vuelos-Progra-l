@@ -8,6 +8,6 @@ package logic;
  *
  * @author josse
  */
-public class Reservation {
+public class DisponibilidadService {
     
 }
