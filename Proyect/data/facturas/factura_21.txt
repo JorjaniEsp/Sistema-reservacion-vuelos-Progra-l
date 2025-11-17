@@ -1,0 +1,14 @@
+=======================
+        FACTURA        
+=======================
+Factura #: 21
+Fecha    : 2025-11-16
+-----------------------
+Pasajero : Pedro Ramirez
+Ruta     : MEX → SJO
+Clase    : EJECUTIVA
+Asiento  : A2
+-----------------------
+Método de pago : TARJETA
+TOTAL          : $457,65
+=======================

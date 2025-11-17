@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package testing;
 
-/**
- *
- * @author josse
- */
+package testing;
+import presentation.*;
+
 public class Test {
+    
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            new FrmInicio().setVisible(true);
+        });
+    }
     
 }

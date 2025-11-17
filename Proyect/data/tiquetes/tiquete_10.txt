@@ -1,0 +1,17 @@
+=======================
+     TIQUETE EMITIDO   
+=======================
+Tiquete #: 10
+Emitido  : 2025-11-16
+-----------------------
+Pasajero : Jorjanie Espinoza
+Ruta     : SJO → MEX
+Fecha    : 2025-11-15
+Hora     : 08:00
+Clase    : EJECUTIVA
+Asiento  : A1
+-----------------------
+Total    : $480,25
+=======================
+ ¡Gracias por su compra! 
+=======================
