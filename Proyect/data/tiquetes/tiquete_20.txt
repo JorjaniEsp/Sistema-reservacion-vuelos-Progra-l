@@ -1,0 +1,17 @@
+=======================
+     TIQUETE EMITIDO   
+=======================
+Tiquete #: 20
+Emitido  : 2025-11-16
+-----------------------
+Pasajero : Pedro Ramirez
+Ruta     : MEX → SJO
+Fecha    : 2025-11-25
+Hora     : 18:00
+Clase    : EJECUTIVA
+Asiento  : A2
+-----------------------
+Total    : $457,65
+=======================
+ ¡Gracias por su compra! 
+=======================

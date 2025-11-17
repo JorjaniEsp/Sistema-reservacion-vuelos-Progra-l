@@ -85,20 +85,23 @@ public class SistemaReservacion {
 
     private void inicializarDatos() {
 
-        Avion avion1 = new Avion(20, 120);  
-        Avion avion2 = new Avion(25, 100);  
+        Avion avion1 = new Avion(2, 2);  
+        Avion avion2 = new Avion(2, 2);  
 
         listaVuelos.add(new Vuelo("SJO", "MEX", "2025-11-15", "08:00", 250.0, avion1));
         listaVuelos.add(new Vuelo("SJO", "MIA", "2025-11-20", "14:00", 220.0, avion2));
-        listaVuelos.add(new Vuelo("MEX", "SJO", "2025-11-25", "18:00", 230.0, avion1));
         listaVuelos.add(new Vuelo("SJO", "PAN", "2025-12-01", "06:30", 180.0, avion2));
+        listaVuelos.add(new Vuelo("MEX", "SJO", "2025-11-25", "18:00", 230.0, avion1));
+        listaVuelos.add(new Vuelo("MEX", "MIA", "2025-12-05", "09:15", 240.0, avion2));
+        listaVuelos.add(new Vuelo("MEX", "PAN", "2025-12-10", "11:45", 260.0, avion1));
+    
     }
 
     private String obtenerFechaActual() {
 
         return java.time.LocalDate.now().toString();
     }
-
+// este main de prueba ya no debe usarse, probar nuevas implemn¡entaciones desde paquete testing.test
     public static void main(String[] args) {
         SistemaReservacion sistema = new SistemaReservacion();
 
