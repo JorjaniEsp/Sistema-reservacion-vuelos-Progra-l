@@ -1,12 +1,14 @@
-Sistema de Reservación de Vuelos
+## Sistema de reservación de vuelos
+
 Simulación académica desarrollada en Java que permite gestionar reservaciones aéreas, generar tiquetes, facturas y validar disponibilidad por clase, integrando además una interfaz gráfica construida en Swing.
 ________________________________________
-Comenzando 
+#### Comenzando 
+
 Estas instrucciones te permitirán obtener una copia del proyecto funcionando en tu máquina local, para propósitos de desarrollo, pruebas y ejecución de la interfaz gráfica.
 
 Más adelante encontrarás un apartado de Despliegue para ejecutar el programa de manera independiente.
 ________________________________________
-Requisitos previos 
+#### Requisitos previos 
 
 Antes de ejecutar el proyecto, necesitarás tener instalado:
 
@@ -18,71 +20,74 @@ Descargar desde: https://www.oracle.com/java/technologies/javase-downloads.html
 
 Ejemplo recomendado:
 
-•	NetBeans
+-	NetBeans
 
 3. Git (opcional, para clonar el repositorio)
 
 Instalar desde: https://git-scm.com/
 ________________________________________
-Instalación 🔧
+#### Instalación 🔧
 
 Sigue estos pasos para ejecutar el proyecto localmente:
 ________________________________________
-1. Clonar el repositorio
+##### 1. Clonar el repositorio
 
 git clone https://github.com/tu-repositorio/Sistema-reservacion-vuelos-l.git
 ________________________________________
-2. Abrir el proyecto
+##### 2. Abrir el proyecto
 
 En tu IDE preferido:
 
-File → Open Project → seleccionar la carpeta del proyecto.
+- File → Open Project → seleccionar la carpeta del proyecto.
 ________________________________________
-3. Verificar que src/ esté configurado como Source Root
+##### 3. Verificar que src/ esté configurado como Source Root
 
 Esto se hace automáticamente en la mayoría de IDEs.
 ________________________________________
-4. Ejecutar la aplicación
+##### 4. Ejecutar la aplicación
 
 Ejecuta la clase:
 
-  testing/Test.java
+  - testing/Test.java
 
 Esto abrirá la interfaz gráfica del sistema.
 ________________________________________
-5. Ejemplo final: iniciar el sistema
+##### 5. Ejemplo final: iniciar el sistema
 
 Al ejecutar Test.java, verás la ventana de inicio.
 
 Desde allí puedes:
 
-•	Buscar vuelos
+-	Buscar vuelos
 
-•	Verificar disponibilidad
+-	Verificar disponibilidad
 
-•	Cotizar
+-	Cotizar
 
-•	Generar tiquete y factura
+-	Generar tiquete y factura
 
-•	Visualizar documentos generados
+-	Visualizar documentos generados
 ________________________________________
-Ejecutando las pruebas 
+#### Ejecutando las pruebas 
 
 Este proyecto tiene pruebas manuales y pruebas implícitas mediante ejecución del flujo completo.
 
 Para probarlo:
 
-1.	Ejecuta la interfaz con Test.java.
+-	Ejecuta la interfaz con Test.java.
 
-2.	Registra una reservación.
+-	Registra una reservación.
 
-3.	Verifica que se generen archivos .txt en:
+-	Verifica que se generen archivos .txt en:
 
-/data/tiquetes
+    - /data/tiquetes
 
-/data/facturas
+    - /data/facturas
+
+> [!TIP]
+> Si necesita un apoyo visual, puede ver nuestro manual de uso en el siguiente enlace **->** [Manual de uso](https://jorjaniesp.github.io/manual-uso/)
 ________________________________________
-Analizar pruebas de extremo a extremo 
+#### Analizar pruebas de extremo a extremo 
 
 Las pruebas E2E en este proyecto consisten en seguir el flujo completo:
 
@@ -98,41 +103,41 @@ Las pruebas E2E en este proyecto consisten en seguir el flujo completo:
    
 6.	Confirmar que el sistema:
     
-o	Reste un asiento correctamente
+  	- Reste un asiento correctamente
 
-o	Calcule el precio
+    - Calcule el precio
 
-o	Emita documentos
+    - Emita documentos
 
-o	Los guarde en /data
+    - Los guarde en /data
 
-Ejemplo:
+**Ejemplo:**
 
 Reservar un vuelo SJO → MEX en clase Económica debería producir:
 
-•	tiquete_10.txt
+     tiquete_10.txt
 
-•	factura_11.txt
+     factura_11.txt
 ________________________________________
-Pruebas de estilo de codificación 
+#### Pruebas de estilo de codificación 
 
 Aunque este proyecto no utiliza un validador automático como Checkstyle, el código sigue prácticas estándar:
 
-•	Uso de paquetes organizados (domain, logic, presentation, testing).
+-	Uso de paquetes organizados (domain, logic, presentation, testing).
 
-•	Clases con responsabilidades claras..
+-	Clases con responsabilidades claras..
 
-Ejemplo:
+**Ejemplo:**
 
-DocumentoFactory valida que los objetos no sean null antes de crear tiquetes o facturas.
+     DocumentoFactory valida que los objetos no sean null antes de crear tiquetes o facturas.
 ________________________________________
-Despliegue 
+#### Despliegue 
 
 Si deseas empaquetar el proyecto como .jar ejecutable:
 
 1.	En tu IDE selecciona:
    
-Export → Runnable JAR / Build Artifacts / Clean & Build
+    - Export → Runnable JAR / Build Artifacts / Clean & Build
 
 2.	Asegúrate de que Test.java sea la clase principal.
    
@@ -140,21 +145,21 @@ Export → Runnable JAR / Build Artifacts / Clean & Build
    
 4.	java -jar SistemaReservacion.jar
 ________________________________________
-Construido con:
+#### Construido con:
 
 Estas son las herramientas utilizadas en el desarrollo del proyecto:
 
-•	Java SE 17+ – Lenguaje principal del sistema
+-	Java SE 17+ – Lenguaje principal del sistema
 
-•	Swing – GUI nativa
+-	Swing – GUI nativa
 
-•	NetBeans 
+-	NetBeans 
 
-•	POO (Programación Orientada a Objetos) – Arquitectura base
+-	POO (Programación Orientada a Objetos) – Arquitectura base
 
-•	Archivos .txt – Persistencia de documentos
+-	Archivos .txt – Persistencia de documentos
 ________________________________________
-Contribuyendo 
+#### Contribuyendo 
 
 Si deseas colaborar:
 
@@ -169,20 +174,20 @@ Si deseas colaborar:
 
 Versionado 
 
-Versión 1.0.0 – Primer prototipo funcional
+##### Versión 1.0.0 – Primer prototipo funcional
 ________________________________________
-Autores 
+#### Autores 
 
-Equipo de desarrollo:
+###### Equipo de desarrollo:
 
-•	Jorjanie Espinoza.
+-	Jorjanie Espinoza.
 
-•	Justin Flores. 
+-	Justin Flores. 
 
-•	Elberth Carranza. 
+-	Elberth Carranza. 
 
-•	Angely Pérez.
+-	Angely Pérez.
 ________________________________________
-Expresiones de Gratitud 
+#### Expresiones de Gratitud 
 
-•	Agradecimientos a todo el equipo de trabajo que mantuvo un enfoque consistente en la elaboración de este proyecto.
+-	Agradecimientos a todo el equipo de trabajo que mantuvo un enfoque consistente en la elaboración de este proyecto.
