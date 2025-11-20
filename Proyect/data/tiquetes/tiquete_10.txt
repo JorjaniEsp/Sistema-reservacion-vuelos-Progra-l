@@ -2,9 +2,9 @@
      TIQUETE EMITIDO   
 =======================
 Tiquete #: 10
-Emitido  : 2025-11-16
+Emitido  : 2025-11-19
 -----------------------
-Pasajero : Jorjanie Espinoza
+Pasajero : jorjanie
 Ruta     : SJO → MEX
 Fecha    : 2025-11-15
 Hora     : 08:00

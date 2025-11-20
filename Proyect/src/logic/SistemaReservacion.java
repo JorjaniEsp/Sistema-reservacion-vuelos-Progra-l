@@ -101,33 +101,6 @@ public class SistemaReservacion {
 
         return java.time.LocalDate.now().toString();
     }
-// este main de prueba ya no debe usarse, probar nuevas implemn¡entaciones desde paquete testing.test
-    public static void main(String[] args) {
-        SistemaReservacion sistema = new SistemaReservacion();
 
-        System.out.println("BÚSQUEDA DE VUELOS");
-        List<Vuelo> encontrados = sistema.buscarVuelos("SJO", "MEX", "2025-11-15");
-        for (Vuelo v : encontrados) System.out.println(v);
-
-        if (!encontrados.isEmpty()) {
-            Vuelo vuelo = encontrados.get(0);
-            Pasajero pasajero = new Pasajero(12345, "Ana López", "8888-9999", "ana@mail.com", "P1234567");
-
-            Reservacion r = sistema.reservar(vuelo, pasajero, Clase.ECONOMICA, "12A", MetodoPago.TARJETA);
-
-            if (r != null) {
-                System.out.println("RESERVACIÓN CONFIRMADA");
-                System.out.println(r);
-                System.out.println(r.getMiTiquete().mostrar());
-                System.out.println(r.getMiFactura().mostrar());
-            } else {
-                System.out.println("No se pudo completar la reservación.");
-            }
-        }
-
-        System.out.println("LISTADO DE RESERVACIONES");
-        for (Reservacion r : sistema.listarReservaciones()) 
-            System.out.println(r);
-    }
 }  
 

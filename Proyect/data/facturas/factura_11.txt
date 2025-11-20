@@ -2,13 +2,13 @@
         FACTURA        
 =======================
 Factura #: 11
-Fecha    : 2025-11-16
+Fecha    : 2025-11-19
 -----------------------
-Pasajero : Jorjanie Espinoza
+Pasajero : jorjanie
 Ruta     : SJO → MEX
 Clase    : EJECUTIVA
 Asiento  : A1
 -----------------------
-Método de pago : TARJETA
+Método de pago : EFECTIVO
 TOTAL          : $480,25
 =======================
